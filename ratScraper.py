@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup
 # cached page instead of fetching a new copy.
 read_from_file = True
 
+# Set split_cue_words to comma separate cue words
+split_cue_words = True
+
 if read_from_file:
     page = open("cached_page.html", "r")
     soup = BeautifulSoup(page, 'html.parser')
@@ -40,6 +43,8 @@ for tr in soup.find_all('tr'):
         # Some questions don't have difficulties. Assume medium.
         difficulty = "Medium"
         
+    if split_cue_words:
+        words = words.replace(" / ", ", ")
     results.write("{}, {}, {}\n".format(words, answer, difficulty))
     
 results.close()
