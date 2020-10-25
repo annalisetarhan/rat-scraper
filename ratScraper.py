@@ -45,7 +45,7 @@ for tr in soup.find_all('tr'):
         
     if split_cue_words:
         words = words.replace(" / ", ", ")
-    results.write("{}, {}, {}\n".format(words, answer, difficulty))
+    results.write("{},{},{}\n".format(words, answer, difficulty))
     
 results.close()
 
